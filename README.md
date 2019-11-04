@@ -2,13 +2,13 @@
 
 ## Why I need MyRestaurantList?
 * Two person A and B.
-* A:" Hey, what should we eat today dinner? "
-* B:" Anything you like. "
-* A:" Cool, then we gonna have pasta tonight. "
-* B:" Pasta again? "
-* A:" Okay... what do you want? "
-* B:" Anything you like. "
-* A:" ... Maybe we should have a eatenlist. "
+    * A:" Hey, what should we eat today dinner? "
+    * B:" Anything you like. "
+    * A:" Cool, then we gonna have pasta tonight. "
+    * B:" Pasta again? "
+    * A:" Okay... what do you want? "
+    * B:" Anything you like. "
+    * A:" ... Maybe we should have a eatenlist. "
 
 ## Features
 1. Search the restaurant we had stored before.
@@ -16,6 +16,8 @@
 3. Show the score board by ranking.
 4. Show the results by dividing the category and area.
 
+## Features
+![](https://i.screenshot.net/73z4pcg)
 
 ## Installation
 1. Github clone
