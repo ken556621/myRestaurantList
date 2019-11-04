@@ -16,6 +16,7 @@
 3. Show the score board by ranking.
 4. Show the results by dividing the category and area.
 
+
 ## Installation
 1. Github clone
 
