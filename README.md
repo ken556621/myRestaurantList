@@ -20,3 +20,16 @@
 1. Github clone
 
     `git clone https://github.com/ken556621/myRestaurantList.git`
+    
+2. Use terminal open file 'myRestaurantList'
+
+     `cd myRestaurantList`
+     
+3. NPM install
+
+    `npm install`
+    
+4. NPM run start
+
+    `npm run start`
+
