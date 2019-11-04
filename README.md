@@ -16,8 +16,6 @@
 3. Show the score board by ranking.
 4. Show the results by dividing the category and area.
 
-## Cover pages
-![](https://i.screenshot.net/73z4pcg)
 
 ## Installation
 1. Github clone
