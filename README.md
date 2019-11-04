@@ -16,7 +16,7 @@
 3. Show the score board by ranking.
 4. Show the results by dividing the category and area.
 
-## Features
+## Cover pages
 ![](https://i.screenshot.net/73z4pcg)
 
 ## Installation
