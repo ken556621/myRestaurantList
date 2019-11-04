@@ -10,14 +10,12 @@ header {
   color: #226089;
 }
 
-.banner {
-  position: relative;
+.carousel-fade{
+  height: 520px;
+}
+
+.carousel-inner {
   z-index: -1;
-  margin: -5px;
-  height: 360px;
-  background: #dddddd center center url('https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5720/restaurants-list-cover.jpg');
-  background-size: cover;
-  filter: blur(3px);
 }
 
 .search-bar .search-bar-outer {
@@ -92,7 +90,7 @@ header {
   color:orange;
 }
 
-.like{
+.liked{
   color: red;
 }
 

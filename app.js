@@ -8,7 +8,7 @@ const port = 3000;
 app.engine('handlebars', exphbs({defaultLayout:'main'}));
 app.set('view engine', 'handlebars');
 
-//bootstrap & jQ
+//bootstrap & jQ & images
 app.use(express.static('public'));
 
 //render 根目錄
@@ -22,11 +22,25 @@ app.get('/restaurants/:restaurant_id', (req, res) => {
     res.render('show', { restaurant: restaurant })
 })
 
-//search
+//render search
 app.get('/search', (req, res) => {
     const keyword = req.query.keyword.toLowerCase();
     const restaurants = restaurantList.results.filter( place => place.name.toLowerCase().includes(keyword));
     res.render('index', { restaurants: restaurants, keyword: keyword })
+})
+
+//render scoreboard
+app.get('/score', (req, res) => {
+    const restaurants = restaurantList.results.sort((a,b) => {
+        return b.rating - a.rating
+    });
+    res.render('score', { restaurants: restaurants });
+})
+
+//render north area
+app.get('/north', (req, res) => {
+    const restaurants = restaurantList.results.filter( place => place.location.includes("北市" || "新北"));
+    res.render('index', { restaurants: restaurants});
 })
 
 

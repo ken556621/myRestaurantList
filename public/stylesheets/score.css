@@ -1,0 +1,17 @@
+.scoreBackground{
+    background-image: url("/img/brickwall.jpg");
+    background-position: center; 
+    background-repeat: repeat; 
+    background-size: cover;
+    width: 45%;
+}
+
+.scoreHover:hover{
+    -webkit-box-shadow: -8px 11px 22px 5px rgba(0,0,0,0.75);
+    -moz-box-shadow: -8px 11px 22px 5px rgba(0,0,0,0.75);
+    box-shadow: -8px 11px 22px 5px rgba(0,0,0,0.75);
+}
+
+.scoreHover:hover .cardHoverTitle{
+    color:darkred;
+}

@@ -1,0 +1,28 @@
+<div class="d-flex flex-column align-items-center mt-4 scoreBackground mx-auto py-2 rounded">
+  {{#each restaurants}}
+  <div class="card m-2" style="width: 35rem;">
+    <div class="card-body">
+      <h5 class="card-title rounded"><span class="bg-warning mr-4 p-2"><i class="fas fa-trophy"></i>{{this.rating}}</span>{{this.name}}</h5>
+      <div class="card mb-3" style="max-width: 600px;">
+        <a href="/restaurants/{{this.id}}" class="text-secondary text-decoration-none">
+          <div class="row no-gutters scoreHover">
+            <div class="col-md-4 d-flex align-items-center pl-2">
+              <img src="{{this.image}}" class="card-img" alt="{{this.name}}">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title cardHoverTitle">{{this.name}}</h5>
+                <p class="card-text">{{this.description}}</p>
+                <p class="card-text"><small class="text-muted"><i class="fas fa-phone-alt mr-2"></i>{{this.phone}}</small></p>
+                <p class="card-text"><small class="text-muted"><i class="fas fa-map-marker-alt mr-2"></i>{{this.location}}</small></p>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
+
+
