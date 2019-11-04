@@ -19,4 +19,4 @@
 ## Installation
 1. Github clone
 
-    `git clone https://github.com/Eason0in/Restaurant-CRUD.git`
+    `git clone https://github.com/ken556621/myRestaurantList.git`
