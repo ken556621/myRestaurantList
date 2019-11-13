@@ -2,11 +2,13 @@ const express = require('express');
 const app = express();
 const exphbs = require('express-handlebars');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 const port = 3000;
 
 //setting engine 
 app.engine('handlebars', exphbs({defaultLayout:'main'}));
 app.set('view engine', 'handlebars');
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //connect to monogodb
 mongoose.connect('mongodb://localhost/restaurant', { useNewUrlParser: true, useUnifiedTopology: true })
@@ -96,7 +98,25 @@ app.get('/new', (req, res) => {
     res.render('new');
 })
 
-app.post
+//storage to db
+app.post('/new', (req, res) => {
+    console.log(req.body);
+    const restaurant = new Restaurant({
+        _id: new mongoose.Types.ObjectId(),
+        name: req.body.name,
+        name_en: req.body.name_en,
+        category: req.body.category,
+        image: req.body.image,
+        location: req.body.city + req.body.zone + req.body.address,
+        phone: req.body.phone,
+        rating: req.body.rating,
+        description: req.body.description
+    })
+    restaurant.save(err => {
+        if(err) return console.err(err)
+        return res.redirect('/');
+    })
+})
 
 
 app.listen(port, () => {
