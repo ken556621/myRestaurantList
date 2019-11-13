@@ -96,6 +96,8 @@ app.get('/new', (req, res) => {
     res.render('new');
 })
 
+app.post
+
 
 app.listen(port, () => {
     console.log(`App is listening on http://localhost:${port}`)
