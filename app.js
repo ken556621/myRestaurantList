@@ -126,6 +126,50 @@ app.post('/new', (req, res) => {
     })
 })
 
+//render edit page
+app.get('/edit/:id', (req, res) => {
+    Restaurant.findById(req.params.id, (err, restaurant) => {
+        if(err){
+            return console.err(err)
+        }
+        const restaurantPhone = restaurant.phone.replace(/\s/g, ''); //Can't send with the space within
+        return res.render('edit', { restaurant: restaurant, restaurantPhone: restaurantPhone });
+    })
+})
+
+//edit to db
+app.post('/edit/:id', (req, res) => {
+    let errorMessage = false;
+
+    //error
+    if(req.body.name === ''){
+        errorMessage = true;
+        return res.render('new', { errorMessage: errorMessage });
+    }else{
+        errorMessage = false;
+    }
+
+    //storage in specific restaurant
+    Restaurant.findById(req.params.id, (err, restaurant) => { 
+        if(err) return console.err(err)
+        restaurant.name = req.body.name;
+        restaurant.name_en = req.body.name_en;
+        restaurant.category = req.body.category;
+        restaurant.image = req.body.image;
+        restaurant.location = req.body.city + req.body.zone + req.body.address;
+        restaurant.phone = req.body.phone;
+        restaurant.rating = req.body.rating;
+        restaurant.description = req.body.description;
+
+        restaurant.save(err => {
+            if(err){
+                return console.err(err)
+            }
+                return res.redirect(`/restaurants/${req.params.id}`);
+        })
+    })
+})
+
 
 app.listen(port, () => {
     console.log(`App is listening on http://localhost:${port}`)

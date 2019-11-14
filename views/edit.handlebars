@@ -1,0 +1,78 @@
+<div class="container d-flex my-4">
+    <form action="/edit/{{restaurant.id}}" method="POST">
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label for="inputName">Name</label>
+                <input type="text" class="form-control {{#if errorMessage}}border border-danger{{/if}}" id="inputName" placeholder="Name" name="name" value="{{restaurant.name}}">
+                {{#if errorMessage}}<small class="form-text text-danger">Must be filled in!</small>{{/if}}
+            </div>
+            <div class="form-group col-md-3">
+                <label for="inputEnglishName">EnglishName</label>
+                <input type="text" class="form-control" id="inputEnglishName" placeholder="EnglishName" name="name_en" value="{{restaurant.name_en}}">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="inputCategory">Category</label>
+                <input type="text" class="form-control" id="inputCategory" placeholder="Category" name="category" value="{{restaurant.category}}">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-2">
+                <label for="inputRating">Rating</label>
+                <input type="number" class="form-control" id="inputRating" placeholder="Rating" name="rating" value="{{restaurant.rating}}">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputImageUrl">ImageUrl</label>
+                <input type="text" class="form-control" id="inputImageUrl" placeholder="ImageUrl" name="image" value="{{restaurant.image}}">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="inputPhone">Phone</label>
+                <input type="number" class="form-control" id="inputPhone" placeholder="Phone" name="phone" value="{{restaurantPhone}}">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label for="inputCity">縣市</label>
+                <select id="inputCity" class="form-control" name="city">
+                    <option selected>Choose...</option>
+                    <option>台北市</option>
+                    <option>新北市</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="inputZone">地區</label>
+                <input type="text" class="form-control" id="inputZone" name="zone">
+            </div>
+        </div>
+         <div class="form-row">
+            <div class="form-group col-md-9">
+                <label for="inputAddress">Address</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="信義路三段123號" name="address" value="{{restaurant.location}}">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck" name="addToEatList">
+                <label class="form-check-label" for="gridCheck">
+                    順便加入待吃清單
+                </label>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">修改</button>
+    </form>
+    <div class="img">
+        <img src="" alt="Sorry...Can't find that ><" id="foodImage" class="img-thumbnail" style="width: 400px;height:400px;">
+    </div>
+</div>
+<script>
+    const inputImageUrl = document.getElementById('inputImageUrl');
+    const foodImage = document.getElementById('foodImage');
+    
+    if(inputImageUrl !== ''){
+        foodImage.src = inputImageUrl.value;
+    }
+    inputImageUrl.addEventListener('input', function(){
+        foodImage.src = inputImageUrl.value;
+    })
+</script>

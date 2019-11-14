@@ -24,7 +24,10 @@
       <div class="card-columns">
         {{#each restaurants}}
             <div class="card mb-3 cardField">
-              <div class="card-body p-3">
+              <div class="edit position-absolute">
+                <a href="/edit/{{this.id}}"><span class="h4 text-warning"><i class="far fa-edit"></i></span></a>
+              </div>
+              <div class="card-body p-2">
                 <a href="/restaurants/{{this.id}}" class="text-secondary text-decoration-none">
                   <img class="card-img-top" src="{{{this.image}}}" alt="{{{this.name}}}">
                   <h6 class="card-title mb-1">{{{this.name}}}</h6>
