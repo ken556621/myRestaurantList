@@ -2,14 +2,6 @@ header {
   overflow: hidden;
 }
 
-.navbar .navbar-brand {
-  color: #4592af;
-}
-
-.navbar .navbar-brand:hover {
-  color: #226089;
-}
-
 .carousel-fade{
   height: 520px;
 }
@@ -21,7 +13,7 @@ header {
 .search-bar .search-bar-outer {
   margin: 0 auto;
   max-width: 680px;
-  background-color: #fce2cf;
+  background-color: #F9D000;
   border-radius: 8px;
   padding: 20px 30px;
   border: 0;
@@ -60,7 +52,6 @@ header {
   -webkit-box-shadow: -8px 11px 22px 5px rgba(0,0,0,0.75);
   -moz-box-shadow: -8px 11px 22px 5px rgba(0,0,0,0.75);
   box-shadow: -8px 11px 22px 5px rgba(0,0,0,0.75);
-  top:-7px;
 }
 .card img{
   height: 180px;

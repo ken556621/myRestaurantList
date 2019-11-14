@@ -141,7 +141,7 @@ app.get('/edit/:id', (req, res) => {
 app.post('/edit/:id', (req, res) => {
     let errorMessage = false;
 
-    //error
+    //error message
     if(req.body.name === ''){
         errorMessage = true;
         return res.render('new', { errorMessage: errorMessage });
@@ -166,6 +166,17 @@ app.post('/edit/:id', (req, res) => {
                 return console.err(err)
             }
                 return res.redirect(`/restaurants/${req.params.id}`);
+        })
+    })
+})
+
+//delete to db
+app.get('/delete/:id', (req, res) => {
+    Restaurant.findById(req.params.id, (err, restaurant) => {
+        if(err) return console.err(err);
+        return restaurant.remove(err => {
+            if(err) return console.err(err);
+            return res.redirect('/');
         })
     })
 })
