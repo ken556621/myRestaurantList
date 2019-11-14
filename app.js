@@ -93,14 +93,14 @@ app.get('/score', (req, res) => {
     })
 })
 
-//add
+//render new page
 app.get('/new', (req, res) => {
     res.render('new');
 })
 
 //storage to db
 app.post('/new', (req, res) => {
-    console.log(req.body);
+    let errorMessage = false;
     const restaurant = new Restaurant({
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
@@ -112,9 +112,17 @@ app.post('/new', (req, res) => {
         rating: req.body.rating,
         description: req.body.description
     })
+    if(req.body.name === ''){
+        errorMessage = true;
+        return res.render('new', { errorMessage: errorMessage });
+    }else{
+        errorMessage = false;
+    }
     restaurant.save(err => {
-        if(err) return console.err(err)
-        return res.redirect('/');
+        if(err){
+            return console.err(err)
+        }
+            return res.redirect('/');
     })
 })
 
