@@ -16,6 +16,18 @@
 3. Show the score board by ranking.
 4. Show the results by dividing the category and area.
 
+## Front page
+
+![](https://i.imgur.com/fUPt2ws.jpg)
+
+## Rating page
+
+![](https://i.imgur.com/R7TCGIW.jpg)
+
+## Detail page
+
+![](https://i.imgur.com/z8itVjj.jpg)
+
 
 ## Installation
 1. Github clone
