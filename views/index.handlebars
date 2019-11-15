@@ -17,6 +17,7 @@
 <!-- restaurant list -->
 <div class="container mt-5">
   <div class="add position-fixed">
+    {{!-- add button --}}
     <a class="nav-link" href="/new"><span class="h1 text-danger" style="text-shadow: -4px 5px 2px rgba(150, 150, 150, 1);"><i class="fas fa-plus-circle"></i></span></a>
   </div>
   <div class="row">
@@ -25,10 +26,11 @@
         {{#each restaurants}}
             <div class="card mb-3 cardField">
               <div class="edit position-absolute">
-                <a href="/edit/{{this.id}}"><span class="h4 text-warning"><i class="far fa-edit"></i></span></a>
+                {{!-- edit button --}}
+                <a href="/edit/{{{this.id}}}"><span class="h4 text-warning"><i class="fas fa-edit"></i></span></a>
               </div>
               <div class="card-body p-2">
-                <a href="/restaurants/{{this.id}}" class="text-secondary text-decoration-none">
+                <a href="/restaurants/{{{this.id}}}" class="text-secondary text-decoration-none">
                   <img class="card-img-top" src="{{{this.image}}}" alt="{{{this.name}}}">
                   <h6 class="card-title mb-1">{{{this.name}}}</h6>
 
@@ -45,8 +47,31 @@
                     <span class="fa fa-star"></span>
                     <span class="fa fa-star"></span>
                 </a> 
-                <span class="ml-5"><i class="far fa-heart"></i></span>
-                <a href="/delete/{{this.id}}"><span class="ml-2 text-secondary"><i class="fas fa-trash"></i></span></a>
+                <span class="ml-4"><i class="far fa-heart"></i></span>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn" data-toggle="modal" data-target="#warning{{{this.id}}}">
+                  <span class="ml-2 text-secondary"><i class="fas fa-trash"></i></span>
+                </button>
+            </div>
+          </div>
+          {{!-- alert message for delete --}}
+          <div class="modal fade" id="warning{{{this.id}}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Delete?!</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  You sure delete {{{this.name}}}?
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <a href="/delete/{{{this.id}}}"><button type="button" class="btn btn-primary">Delete!</button></a>
+                </div>
+              </div>
             </div>
           </div>
         {{/each}}
