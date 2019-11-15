@@ -2,7 +2,7 @@
 <div class="container search-bar">
   <div class="search-bar-outer">
     <div class="search-bar-inner">
-      <form action="/search">
+      <form action="/restaurants/search">
         <h4 class="text-center">尋找您的完美餐廳</h4>
         <div class="input-group">
           <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..." value="{{keyword}}" aria-describedby="search-button">
@@ -18,7 +18,7 @@
 <div class="container mt-5">
   <div class="add position-fixed">
     {{!-- add button --}}
-    <a class="nav-link" href="/new"><span class="h1 text-danger" style="text-shadow: -4px 5px 2px rgba(150, 150, 150, 1);"><i class="fas fa-plus-circle"></i></span></a>
+    <a class="nav-link" href="/restaurants/new"><span class="h1 text-danger" style="text-shadow: -4px 5px 2px rgba(150, 150, 150, 1);"><i class="fas fa-plus-circle"></i></span></a>
   </div>
   <div class="row">
     <div class="col-md-10 col-12 mx-auto">
@@ -27,10 +27,11 @@
             <div class="card mb-3 cardField">
               <div class="edit position-absolute">
                 {{!-- edit button --}}
-                <a href="/edit/{{{this.id}}}"><span class="h4 text-warning"><i class="fas fa-edit"></i></span></a>
+                <a href="/restaurants/edit/{{{this.id}}}"><span class="h4 text-warning"><i class="fas fa-edit"></i></span></a>
               </div>
               <div class="card-body p-2">
-                <a href="/restaurants/{{{this.id}}}" class="text-secondary text-decoration-none">
+                {{!-- restaurant show --}}
+                <a href="/restaurants/show/{{{this.id}}}" class="text-secondary text-decoration-none">
                   <img class="card-img-top" src="{{{this.image}}}" alt="{{{this.name}}}">
                   <h6 class="card-title mb-1">{{{this.name}}}</h6>
 
@@ -69,7 +70,9 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <a href="/delete/{{{this.id}}}"><button type="button" class="btn btn-primary">Delete!</button></a>
+                  <form action="/restaurants/delete/{{{this.id}}}?_method=DELETE" method="POST">
+                    <button type="submit" class="btn btn-primary">Delete!</button>
+                  </form>
                 </div>
               </div>
             </div>
