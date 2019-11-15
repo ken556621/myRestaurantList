@@ -13,6 +13,7 @@
 ## Features
 1. Search the restaurant we had stored before.
 2. Add the restaurant we want to eaten list.
+3. Delete or modify the restaurant we had made.
 3. Show the score board by ranking.
 4. Show the results by dividing the category and area.
 
