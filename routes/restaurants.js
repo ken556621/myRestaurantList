@@ -49,7 +49,7 @@ router.get('/new', (req, res) => {
 })
 
 //storage to db
-router.put('/new', (req, res) => {
+router.post('/new', (req, res) => {
     let errorMessage = false;
     const restaurant = new Restaurant({
         name: req.body.name,
