@@ -4,6 +4,7 @@ const exphbs = require('express-handlebars');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+const session = require('express-session');
 const port = 3000;
 
 //setting engine 
@@ -28,12 +29,20 @@ db.once('open', () => {
     console.log('Mongodb connect!');
 })
 
+//使用session
+app.use(session({
+    secret: 'My secret',
+    resave: false,
+    saveUninitialized: true
+}))
+
 //bootstrap & jQ & images
 app.use(express.static('public'));
 
 
 app.use('/', require('./routes/homes'));
 app.use('/restaurants', require('./routes/restaurants'));
+app.use('/users', require('./routes/users'));
 
 
 app.listen(port, () => {
