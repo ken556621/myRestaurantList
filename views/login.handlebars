@@ -1,0 +1,23 @@
+<div class="container bg-white rounded col-6 mt-4">
+    <form action='/users/login' method="POST">
+        <fieldset>
+        <div class="form-group">
+            <label for="login-field-Email1">Email address</label>
+            <input type="email" class="form-control" id="login-field-Email1" aria-describedby="emailHelp" placeholder="Enter email" name="email">
+        </div>
+        <div class="form-group">
+            <label for="login-field-Password1">Password</label>
+            <input type="password" class="form-control" id="login-field-Password1" placeholder="Password" name="password">
+        </div>
+        </fieldset>
+        <div class="modal-footer justify-content-between">
+        <div>
+            <a class="nav-link active" href="/users/register">Register</a>
+        </div>
+        <div>
+            <a href="/"><button type="button" class="btn btn-secondary" data-dismiss="modal">Home page</button></a>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+        </div>
+    </form>
+</div>

@@ -2,9 +2,11 @@ const express = require('express');
 const router = express.Router();
 const Restaurant = require('../models/restaurant.js');
 
+const { authenticated } = require('../config/auth');
+
 
 //render show
-router.get('/show/:id', (req, res) => {
+router.get('/show/:id', authenticated, (req, res) => {
     Restaurant.findById(req.params.id, (err, restaurant) => {
         if(err){
             return console.err(err)
@@ -14,7 +16,7 @@ router.get('/show/:id', (req, res) => {
 })
 
 //render search
-router.get('/search', (req, res) => {
+router.get('/search', authenticated, (req, res) => {
     const keyword = req.query.keyword.toLowerCase();
     Restaurant.find((err, restaurants) => {
         if(err) return console.err(err);
@@ -24,7 +26,7 @@ router.get('/search', (req, res) => {
 })
 
 //render north area
-router.get('/location/north', (req, res) => {
+router.get('/location/north', authenticated, (req, res) => {
     Restaurant.find((err, restaurants) => {
         if(err) return console.err(err)
         const northRestaurants = restaurants.filter( place => place.location.includes("北市" ||  "新北"));
@@ -33,7 +35,7 @@ router.get('/location/north', (req, res) => {
 })
 
 //render scoreboard
-router.get('/score', (req, res) => {
+router.get('/score', authenticated, (req, res) => {
     Restaurant.find((err, restaurants) => {
         if(err) return console.err(err);
         const restaurantScoreList = restaurants.sort((a, b) => {
@@ -44,12 +46,12 @@ router.get('/score', (req, res) => {
 })
 
 //render new page
-router.get('/new', (req, res) => {
+router.get('/new', authenticated, (req, res) => {
     res.render('new');
 })
 
 //storage to db
-router.post('/new', (req, res) => {
+router.post('/new', authenticated, (req, res) => {
     let errorMessage = false;
     const restaurant = new Restaurant({
         name: req.body.name,
@@ -76,7 +78,7 @@ router.post('/new', (req, res) => {
 })
 
 //render edit page
-router.get('/edit/:id', (req, res) => {
+router.get('/edit/:id', authenticated, (req, res) => {
     Restaurant.findById(req.params.id, (err, restaurant) => {
         if(err){
             return console.err(err)
@@ -87,7 +89,7 @@ router.get('/edit/:id', (req, res) => {
 })
 
 //edit to db
-router.put('/edit/:id', (req, res) => {
+router.put('/edit/:id', authenticated, (req, res) => {
     let errorMessage = false;
 
     //error message
@@ -120,7 +122,7 @@ router.put('/edit/:id', (req, res) => {
 })
 
 //delete to db
-router.delete('/delete/:id', (req, res) => {
+router.delete('/delete/:id', authenticated, (req, res) => {
     Restaurant.findById(req.params.id, (err, restaurant) => {
         if(err) return console.err(err);
         return restaurant.remove(err => {

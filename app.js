@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const session = require('express-session');
+const passport = require('passport');
 const port = 3000;
 
 //setting engine 
@@ -35,6 +36,17 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }))
+
+//啟動 passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+require('./config/passport')(passport);
+app.use((req, res, next) => {
+    res.locals.user = req.user;
+    res.locals.isAuthenticated = req.isAuthenticated();
+    next();
+})
 
 //bootstrap & jQ & images
 app.use(express.static('public'));

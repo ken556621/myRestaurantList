@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
 const bcrypt = require('bcryptjs');
+const passport = require('passport');
 const saltRounds = 10;
 
 //註冊
@@ -34,7 +35,6 @@ router.post('/register', (req, res, next) => {
             })
         }
     })
-    res.redirect('/');
 })
 
 //登入
@@ -43,7 +43,10 @@ router.get('/login', (req, res, next) => {
 })
 
 router.post('/login', (req, res, next) => {
-    next();
+    passport.authenticate('local', {
+        successRedirect: '/',
+        failureRedirect: '/users/login'
+    })(req, res, next)
 })
 
 //登出

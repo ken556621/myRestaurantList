@@ -56,32 +56,17 @@
                         <a class="nav-link" href="/restaurants/score">排行榜</a>
                     </li>
                 </ul>
+                {{#if isAuthenticated}}
                 <span class="navbar-text">
-                    <a class="nav-link" href="#"><i class="fas fa-sign-in-alt">登入</i></a>
+                    <a class="nav-link" href="/users/login"><i class="fas fa-sign-in-alt">登出</i></a>
                 </span>
+                {{else}}
+                <span class="navbar-text">
+                    <a class="nav-link" href="/users/login"><i class="fas fa-sign-in-alt">登入</i></a>
+                </span>
+                {{/if}}
             </div>
         </nav>
-        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active" data-interval="10000">
-                    <img src="/img/berry.jpg" class="d-block w-100" alt="berry">
-                </div>
-                <div class="carousel-item" data-interval="10000">
-                    <img src="/img/peers.jpg" class="d-block w-100" alt="peers">
-                </div>
-                <div class="carousel-item" data-interval="10000">
-                    <img src="/img/night.jpg" class="d-block w-100" alt="night">
-                </div>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
     </header>
     {{{body}}}
   <script src="/javascripts/popper.min.js"></script>

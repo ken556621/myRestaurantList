@@ -1,9 +1,7 @@
-header {
-  overflow: hidden;
-}
 
 .carousel-fade{
   height: 520px;
+  overflow: hidden;
 }
 
 .carousel-inner {
