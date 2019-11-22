@@ -7,7 +7,7 @@ const { authenticated } = require('../config/auth');
 
 //render show
 router.get('/show/:id', authenticated, (req, res) => {
-    Restaurant.findById(req.params.id, (err, restaurant) => {
+    Restaurant.findById({ _id:req.params.id, userId:req.user._id }, (err, restaurant) => {
         if(err){
             return console.err(err)
         }
@@ -18,7 +18,7 @@ router.get('/show/:id', authenticated, (req, res) => {
 //render search
 router.get('/search', authenticated, (req, res) => {
     const keyword = req.query.keyword.toLowerCase();
-    Restaurant.find((err, restaurants) => {
+    Restaurant.find({ uesrId:req.user._id }, (err, restaurants) => {
         if(err) return console.err(err);
         const restaurant = restaurants.filter(restaurant => restaurant.name.toLowerCase().includes(keyword) || restaurant.category.toLowerCase().includes(keyword) || restaurant.name_en.toLowerCase().includes(keyword))
         return res.render('index', { restaurants: restaurant });
@@ -27,7 +27,7 @@ router.get('/search', authenticated, (req, res) => {
 
 //render north area
 router.get('/location/north', authenticated, (req, res) => {
-    Restaurant.find((err, restaurants) => {
+    Restaurant.find({ uesrId:req.user._id }, (err, restaurants) => {
         if(err) return console.err(err)
         const northRestaurants = restaurants.filter( place => place.location.includes("北市" ||  "新北"));
         return res.render('index', { restaurants: northRestaurants });
@@ -36,7 +36,7 @@ router.get('/location/north', authenticated, (req, res) => {
 
 //render scoreboard
 router.get('/score', authenticated, (req, res) => {
-    Restaurant.find((err, restaurants) => {
+    Restaurant.find({ uesrId:req.user._id }, (err, restaurants) => {
         if(err) return console.err(err);
         const restaurantScoreList = restaurants.sort((a, b) => {
             return b.rating - a.rating
@@ -61,7 +61,8 @@ router.post('/new', authenticated, (req, res) => {
         location: req.body.city + req.body.zone + req.body.address,
         phone: req.body.phone,
         rating: req.body.rating,
-        description: req.body.description
+        description: req.body.description,
+        userId: req.user._id
     })
     if(req.body.name === ''){
         errorMessage = true;
@@ -79,7 +80,7 @@ router.post('/new', authenticated, (req, res) => {
 
 //render edit page
 router.get('/edit/:id', authenticated, (req, res) => {
-    Restaurant.findById(req.params.id, (err, restaurant) => {
+    Restaurant.findById({ _id:req.params.id, userId:req.user._id }, (err, restaurant) => {
         if(err){
             return console.err(err)
         }
@@ -101,7 +102,7 @@ router.put('/edit/:id', authenticated, (req, res) => {
     }
 
     //storage in specific restaurant
-    Restaurant.findById(req.params.id, (err, restaurant) => { 
+    Restaurant.findById({ _id:req.params.id, userId:req.user._id }, (err, restaurant) => { 
         if(err) return console.err(err)
         restaurant.name = req.body.name;
         restaurant.name_en = req.body.name_en;
@@ -123,7 +124,7 @@ router.put('/edit/:id', authenticated, (req, res) => {
 
 //delete to db
 router.delete('/delete/:id', authenticated, (req, res) => {
-    Restaurant.findById(req.params.id, (err, restaurant) => {
+    Restaurant.findById({ _id:req.params.id, userId:req.user._id }, (err, restaurant) => {
         if(err) return console.err(err);
         return restaurant.remove(err => {
             if(err) return console.err(err);

@@ -6,7 +6,7 @@ const { authenticated } = require('../config/auth');
 
 //render 根目錄
 router.get('/', authenticated, (req, res) => {
-    Restaurant.find((err, restaurants) => {
+    Restaurant.find({ userId: req.user._id },(err, restaurants) => {
         if(err) return console.err(err);
         return res.render('index', { restaurants: restaurants });
     })
