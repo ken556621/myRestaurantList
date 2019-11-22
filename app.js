@@ -1,5 +1,9 @@
 const express = require('express');
 const app = express();
+//如果不是開發模式，用 dotenv 讀取 .env檔案
+if(process.env.NODE_ENV !== 'production'){
+    require('dotenv').config();
+}
 const exphbs = require('express-handlebars');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -55,6 +59,7 @@ app.use(express.static('public'));
 app.use('/', require('./routes/homes'));
 app.use('/restaurants', require('./routes/restaurants'));
 app.use('/users', require('./routes/users'));
+app.use('/auth', require('./routes/auth'));
 
 
 app.listen(port, () => {

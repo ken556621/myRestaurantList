@@ -1,4 +1,7 @@
-<div class="container bg-white rounded col-6 mt-4">
+<div class="container bg-white rounded col-4 mt-4">
+    <div class="picture text-center">
+        <img src="/img/logo.png" width="120" height="120" class="d-inline-block align-top" alt="我的餐廳清單">
+    </div>
     <form action='/users/login' method="POST">
         <fieldset>
         <div class="form-group">
@@ -12,7 +15,10 @@
         </fieldset>
         <div class="modal-footer justify-content-between">
         <div>
-            <a class="nav-link active" href="/users/register">Register</a>
+            <a class="nav-link active h3" href="/users/register">Register</a>
+        </div>
+        <div>
+            <a class="h3 text-primary" href="/auth/facebook"><i class="fab fa-facebook-square"></i></a>
         </div>
         <div>
             <a href="/"><button type="button" class="btn btn-secondary" data-dismiss="modal">Home page</button></a>
