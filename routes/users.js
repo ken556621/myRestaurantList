@@ -12,6 +12,22 @@ router.get('/register', (req, res, next) => {
 
 router.post('/register', (req, res, next) => {
     const { name, email, password, password2 } = req.body;
+    let errors = [];
+    if(!name || !email || !password || !password2){
+        errors.push({ message: 'Every blank should be filled.' });
+    }
+    if(password !== password2){
+        errors.push({ message: 'Password and Ensure password are different.'});
+    }
+    if(errors.length > 0){
+        res.render('register', { 
+            errors,
+            name,
+            email,
+            password,
+            password2
+         })
+    }
     User.findOne({ email: email }).then(user => {
         //已被註冊
         if(user){

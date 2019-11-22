@@ -1,10 +1,11 @@
 <div class="container bg-white rounded col-6 mt-4">
+    {{> messages}}
     <form action='/users/register' method="POST">
         <fieldset>
         <div class="form-group">
             <fieldset>
                 <label class="control-label" for="readOnlyInput">Name</label>
-                <input class="form-control" id="readOnlyInput" type="text" placeholder="Your name here…" name="name">
+                <input class="form-control" id="readOnlyInput" type="text" placeholder="Your name here…" name="name" value="{{{name}}}">
             </fieldset>
         </div>
         <div class="form-group row">
@@ -15,16 +16,16 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email">
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email" value="{{{email}}}">
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password" value="{{{password}}}">
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Ensure Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Ensure Password" name="password2">
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Ensure Password" name="password2" value="{{{password2}}}">
         </div>
         </fieldset>
         <div class="modal-footer">
