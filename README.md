@@ -14,12 +14,12 @@
 
 | Features | Details  | Routes   |
 | -------- | -------- | -------- |
-| Search   | category & name | /retaurants/search |
-| Add new restaurant | name is required | /restaurants/new |
-| Edit         | picture URL checked         | /restaurants/edit         | 
-| Delete         | confirm message          |/restaurants/delete          | 
-| Sort         |  rank        |  /restaurants/score        |
-| Login & Logout     | Text     | /users/login & /users/logout    |
+| Search   | Category & Name | /retaurants/search |
+| Add new restaurant | Name is required | /restaurants/new |
+| Edit         | Picture URL checked         | /restaurants/edit         | 
+| Delete         | Confirm message          |/restaurants/delete          | 
+| Sort         |  Rank        |  /restaurants/score        |
+| Login & Logout     | Facebook login included     | /users/login & /users/logout    |
 
 ## Front page
 
@@ -44,6 +44,7 @@
     `npm run start`
     
 ## Testing data
+
 |   User | Email |  password |
 | -------- | -------- | -------- |
 |  user1        |  user1@example.com        | 12345678         |
@@ -52,4 +53,16 @@
    password: 12345678
 2. Email: user2@example.com
    password: 12345678
+   
+## Environment
+1. Express
+2. Express-session
+3. Nodemon
+4. Dotenv
+5. Express-handlebars
+6. Body-parser
+7. Connect-flash
+> Data base
+1. Mongodb
+2. Mongoose
 
