@@ -11,11 +11,15 @@
     * A:" ... Maybe we should have a eatenlist. "
 
 ## Features
-1. Search the restaurant we had stored before.
-2. Add the restaurant we want to eaten list.
-3. Delete or modify the restaurant we had made.
-3. Show the score board by ranking.
-4. Show the results by dividing the category and area.
+
+| Features | Details  | Routes   |
+| -------- | -------- | -------- |
+| Search   | category & name | /retaurants/search |
+| Add new restaurant | name is required | /restaurants/new |
+| Edit         | picture URL checked         | /restaurants/edit         | 
+| Delete         | confirm message          |/restaurants/delete          | 
+| Sort         |  rank        |  /restaurants/score        |
+| Login & Logout     | Text     | /users/login & /users/logout    |
 
 ## Front page
 
@@ -40,6 +44,10 @@
     `npm run start`
     
 ## Testing data
+|   User | Email |  password |
+| -------- | -------- | -------- |
+|  user1        |  user1@example.com        | 12345678         |
+|  user2|user2@example.com|12345678
 1. Email: user1@example.com
    password: 12345678
 2. Email: user2@example.com
