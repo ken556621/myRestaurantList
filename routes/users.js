@@ -31,7 +31,14 @@ router.post('/register', (req, res, next) => {
     User.findOne({ email: email }).then(user => {
         //已被註冊
         if(user){
-            res.render('register');
+            errors.push({ message: 'The email has already been registed.' })
+            res.render('register', { 
+                errors,
+                name,
+                email,
+                password,
+                password2
+             });
         //新增至資料庫
         }else{
             const newUser = new User({
@@ -39,6 +46,17 @@ router.post('/register', (req, res, next) => {
                 email,
                 password
             })
+            //資料檢查，無email & password
+            if(!email || !password){
+                return res.render('register', {
+                    errors,
+                    name,
+                    email,
+                    password,
+                    password2
+                 }
+                )
+            }
         //加鹽&湊雜
             bcrypt.genSalt(saltRounds, (err, salt) => {
                 bcrypt.hash(password, salt, (err, hash) => {
@@ -68,6 +86,7 @@ router.post('/login', (req, res, next) => {
 //登出
 router.get('/logout', (req, res, next) => {
     req.logout();
+    req.flash('success_msg', 'You have been logout.')
     res.redirect('/users/login');
 })
 

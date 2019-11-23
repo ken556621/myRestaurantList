@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Restaurant = require('../models/restaurant.js');
+const EatenList = require('../models/eatenList');
 
 const { authenticated } = require('../config/auth');
 
@@ -15,10 +16,21 @@ router.get('/show/:id', authenticated, (req, res) => {
     })
 })
 
+//render eatenList
+router.get('/eatenList', authenticated, (req, res) => {
+    EatenList.find({ uesrId: req.user._id }, (err, eatenList) => {
+        if(err){
+            return console.log(err);
+        } 
+        console.log(eatenList)
+        return res.render('eatenList', { eatenList: eatenList });
+    })
+})
+
 //render search
 router.get('/search', authenticated, (req, res) => {
     const keyword = req.query.keyword.toLowerCase();
-    Restaurant.find({ uesrId:req.user._id }, (err, restaurants) => {
+    Restaurant.find({ uesrId: req.user._id }, (err, restaurants) => {
         if(err) return console.err(err);
         const restaurant = restaurants.filter(restaurant => restaurant.name.toLowerCase().includes(keyword) || restaurant.category.toLowerCase().includes(keyword) || restaurant.name_en.toLowerCase().includes(keyword))
         return res.render('index', { restaurants: restaurant });
@@ -27,7 +39,7 @@ router.get('/search', authenticated, (req, res) => {
 
 //render north area
 router.get('/location/north', authenticated, (req, res) => {
-    Restaurant.find({ uesrId:req.user._id }, (err, restaurants) => {
+    Restaurant.find({ uesrId: req.user._id }, (err, restaurants) => {
         if(err) return console.err(err)
         const northRestaurants = restaurants.filter( place => place.location.includes("北市" ||  "新北"));
         return res.render('index', { restaurants: northRestaurants });
@@ -36,7 +48,7 @@ router.get('/location/north', authenticated, (req, res) => {
 
 //render scoreboard
 router.get('/score', authenticated, (req, res) => {
-    Restaurant.find({ uesrId:req.user._id }, (err, restaurants) => {
+    Restaurant.find({ uesrId: req.user._id }, (err, restaurants) => {
         if(err) return console.err(err);
         const restaurantScoreList = restaurants.sort((a, b) => {
             return b.rating - a.rating
@@ -50,7 +62,7 @@ router.get('/new', authenticated, (req, res) => {
     res.render('new');
 })
 
-//storage to db
+//General list storage
 router.post('/new', authenticated, (req, res) => {
     let errorMessage = false;
     const restaurant = new Restaurant({
@@ -69,6 +81,24 @@ router.post('/new', authenticated, (req, res) => {
         return res.render('new', { errorMessage: errorMessage });
     }else{
         errorMessage = false;
+    }
+    if(req.body.eatenList){
+        const newEatenList = new EatenList({
+            name: req.body.name,
+            name_en: req.body.name_en,
+            category: req.body.category,
+            image: req.body.image,
+            location: req.body.city + req.body.zone + req.body.address,
+            phone: req.body.phone,
+            rating: req.body.rating,
+            description: req.body.description,
+            userId: req.user._id
+        })
+        newEatenList.save(err => {
+            if(err){
+                return console.log(err);
+            }
+        })
     }
     restaurant.save(err => {
         if(err){

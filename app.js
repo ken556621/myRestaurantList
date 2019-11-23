@@ -21,7 +21,7 @@ app.use(methodOverride('_method'));
 app.use(flash());
 
 //connect to monogodb
-mongoose.connect('mongodb://localhost/restaurant', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://localhost/restaurant', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
 
 //透過 mongoose 拿到 mongodb 物件
 const db = mongoose.connection;
