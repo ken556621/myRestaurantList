@@ -21,14 +21,6 @@
 
 ![](https://i.imgur.com/fUPt2ws.jpg)
 
-## Rating page
-
-![](https://i.imgur.com/R7TCGIW.jpg)
-
-## Detail page
-
-![](https://i.imgur.com/z8itVjj.jpg)
-
 
 ## Installation
 1. Github clone
@@ -46,4 +38,10 @@
 4. NPM run start
 
     `npm run start`
+    
+## Testing data
+1. Email: user1@example.com
+   password: 12345678
+2. Email: user2@example.com
+   password: 12345678
 
