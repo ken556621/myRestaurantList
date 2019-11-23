@@ -49,10 +49,7 @@
 | -------- | -------- | -------- |
 |  user1        |  user1@example.com        | 12345678         |
 |  user2|user2@example.com|12345678
-1. Email: user1@example.com
-   password: 12345678
-2. Email: user2@example.com
-   password: 12345678
+
    
 ## Environment
 1. Express
