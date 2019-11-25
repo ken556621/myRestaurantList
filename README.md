@@ -74,6 +74,7 @@
 5. Express-handlebars
 6. Body-parser
 7. Connect-flash
+8. Moment js
 > Data base
 1. Mongodb
 2. Mongoose
