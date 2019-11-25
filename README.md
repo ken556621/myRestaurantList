@@ -35,13 +35,28 @@
 
      `cd myRestaurantList`
      
-3. NPM install
+3. Use terminal add new file name '.env'
+
+    `touch .env`
+    
+4. Inside the env folder type
+
+    `FACEBOOK_ID=//your client ID`
+    `FACEBOOK_SECRET=//your facebook secret`
+    `FACEBOOK_CALLBACK=http://localhost:3000/auth/facebook/callback`
+    > This is for facebook login secret key
+     
+5. NPM install
 
     `npm install`
     
-4. NPM run start
+6. NPM run start
 
     `npm run start`
+    
+7. Open browser 
+    
+    `http://localhost:3000`
     
 ## Testing data
 
@@ -59,6 +74,7 @@
 5. Express-handlebars
 6. Body-parser
 7. Connect-flash
+8. Moment js
 > Data base
 1. Mongodb
 2. Mongoose
