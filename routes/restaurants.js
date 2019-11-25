@@ -39,7 +39,7 @@ router.get('/search', authenticated, (req, res) => {
 
 //render north area
 router.get('/location/north', authenticated, (req, res) => {
-    Restaurant.find({ uesrId: req.user._id }, (err, restaurants) => {
+    Restaurant.find({ userId: req.user._id }, (err, restaurants) => {
         if(err) return console.err(err)
         const northRestaurants = restaurants.filter( place => place.location.includes("北市" ||  "新北"));
         return res.render('index', { restaurants: northRestaurants });
@@ -48,12 +48,9 @@ router.get('/location/north', authenticated, (req, res) => {
 
 //render scoreboard
 router.get('/score', authenticated, (req, res) => {
-    Restaurant.find({ uesrId: req.user._id }, (err, restaurants) => {
-        if(err) return console.err(err);
-        const restaurantScoreList = restaurants.sort((a, b) => {
-            return b.rating - a.rating
-        })
-        return res.render('score', { restaurants: restaurantScoreList })
+    Restaurant.find({ userId: req.user._id }).sort({ rating: 'desc' }).exec((err, restaurants) => {
+        if(err) return console.log(err)
+        return res.render('score', { restaurants })
     })
 })
 

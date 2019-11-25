@@ -8,9 +8,9 @@ const session = require('express-session');
 const passport = require('passport');
 const flash = require('connect-flash');
 const port = 3000;
-//如果不是開發模式，用 dotenv 讀取 .env檔案
-if(process.env.NODE_ENV !== 'production'){
-    require('dotenv').config();
+
+if (process.env.NODE_ENV !== 'production') {      // 如果不是 production 模式
+    require('dotenv').config()                      // 使用 dotenv 讀取 .env 檔案
 }
 
 //setting engine 
