@@ -1,9 +1,5 @@
 const express = require('express');
 const app = express();
-//如果不是開發模式，用 dotenv 讀取 .env檔案
-if(process.env.NODE_ENV !== 'production'){
-    require('dotenv').config();
-}
 const exphbs = require('express-handlebars');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -12,6 +8,10 @@ const session = require('express-session');
 const passport = require('passport');
 const flash = require('connect-flash');
 const port = 3000;
+//如果不是開發模式，用 dotenv 讀取 .env檔案
+if(process.env.NODE_ENV !== 'production'){
+    require('dotenv').config();
+}
 
 //setting engine 
 app.engine('handlebars', exphbs({defaultLayout:'main'}));
