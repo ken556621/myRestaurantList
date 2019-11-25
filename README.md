@@ -11,23 +11,19 @@
     * A:" ... Maybe we should have a eatenlist. "
 
 ## Features
-1. Search the restaurant we had stored before.
-2. Add the restaurant we want to eaten list.
-3. Delete or modify the restaurant we had made.
-3. Show the score board by ranking.
-4. Show the results by dividing the category and area.
+
+| Features | Details  | Routes   |
+| -------- | -------- | -------- |
+| Search   | Category & Name | /retaurants/search |
+| Add new restaurant | Name is required | /restaurants/new |
+| Edit         | Picture URL checked         | /restaurants/edit         | 
+| Delete         | Confirm message          |/restaurants/delete          | 
+| Sort         |  Rank        |  /restaurants/score        |
+| Login & Logout     | Facebook login included     | /users/login & /users/logout    |
 
 ## Front page
 
 ![](https://i.imgur.com/fUPt2ws.jpg)
-
-## Rating page
-
-![](https://i.imgur.com/R7TCGIW.jpg)
-
-## Detail page
-
-![](https://i.imgur.com/z8itVjj.jpg)
 
 
 ## Installation
@@ -46,4 +42,24 @@
 4. NPM run start
 
     `npm run start`
+    
+## Testing data
+
+|   User | Email |  password |
+| -------- | -------- | -------- |
+|  user1        |  user1@example.com        | 12345678         |
+|  user2|user2@example.com|12345678
+
+   
+## Environment
+1. Express
+2. Express-session
+3. Nodemon
+4. Dotenv
+5. Express-handlebars
+6. Body-parser
+7. Connect-flash
+> Data base
+1. Mongodb
+2. Mongoose
 
