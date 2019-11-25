@@ -18,7 +18,8 @@ const eatenListSchema = new Schema({
         ref: 'User',
         index: true,
         required: true
-    }
+    },
+    date: String
 })
 
 module.exports = mongoose.model('EatenList', eatenListSchema);

@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Restaurant = require('../models/restaurant.js');
 const EatenList = require('../models/eatenList');
+const moment = require('moment');
 
 const { authenticated } = require('../config/auth');
 
@@ -18,12 +19,18 @@ router.get('/show/:id', authenticated, (req, res) => {
 
 //render eatenList
 router.get('/eatenList', authenticated, (req, res) => {
-    EatenList.find({ uesrId: req.user._id }, (err, eatenList) => {
+    EatenList.find({ userId: req.user._id }, (err, eatenList) => {
         if(err){
             return console.log(err);
         } 
-        console.log(eatenList)
-        return res.render('eatenList', { eatenList: eatenList });
+        console.log(eatenList.id)
+        eatenList.forEach(restaurant => {
+            const dayAgo = moment(restaurant.date).startOf('day').fromNow()
+            restaurant.dateFromNow = dayAgo
+        })
+        
+        
+        return res.render('eatenList', { eatenList });
     })
 })
 
@@ -80,6 +87,7 @@ router.post('/new', authenticated, (req, res) => {
         errorMessage = false;
     }
     if(req.body.eatenList){
+        let time = moment().format("YYYYMMDD")
         const newEatenList = new EatenList({
             name: req.body.name,
             name_en: req.body.name_en,
@@ -89,7 +97,8 @@ router.post('/new', authenticated, (req, res) => {
             phone: req.body.phone,
             rating: req.body.rating,
             description: req.body.description,
-            userId: req.user._id
+            userId: req.user._id,
+            date: time
         })
         newEatenList.save(err => {
             if(err){

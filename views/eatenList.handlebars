@@ -1,8 +1,27 @@
+<div class="container col-6 mt-4">
+  <div class="list-group">
+    {{#each eatenList}}
+    <a href="/restaurants/show/{{{this.id}}}">
+      <button type="button" class="list-group-item list-group-item-action active d-flex justify-content-between">
+        <div class="text-monospace">
+          <span class="badge badge-pill badge-danger font-weight-normal">
+            {{this.rating}}
+            <i class="fas fa-star fa-xs"></i>
+          </span>
+          {{{this.name}}}
+        </div>
+        <div class="text-monospace">
+          {{{this.dateFromNow}}}
+        </div>
+        <div class="text-monospace">
+          <i class="fas fa-utensils pr-2"></i>{{{this.category}}}
+        </div>
+        <div class="text-monospace">
+          <i class="fas fa-mobile-alt pr-2"></i>{{{this.phone}}}
+        </div>
+      </button>
+    </a>
+    {{/each}}
+  </div>
+</div>
 
-{{#each eatenList}}
-<ul class="list-group list-group-flush">
-  <li class="list-group-item">{{this.name}}</li>
-  <li class="list-group-item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, officia natus voluptatibus, repellat optio recusandae quia adipisci atque possimus voluptas distinctio quod dolorum officiis laboriosam ipsa rem hic odit qui.</li>
-  <li class="list-group-item">{{eatenList.category}}</li>
-</ul>
-{{/each}}
